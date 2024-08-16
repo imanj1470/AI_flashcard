@@ -1,20 +1,18 @@
 import Image from "next/image";
-import getStripe from "@/utils/get_stripe"
+import getStripe from "@/utils/get_stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-
-import {Toolbar, Typography, Container, AppBar, Button } from "@mui/material";
+import { Toolbar, Typography, Container, AppBar, Button } from "@mui/material";
+import Head from "next/head"; // Correct import for Head
 
 export default function Home() {
   return (
     <Container maxWidth="lg">
       <Head>
-        <Title>
-          AI Flashcard
-        </Title>
-        <meta name="description" content="Create personalised flashcards from your textbooks"/>
+        <title>AI Flashcard</title> {/* Correct usage of title */}
+        <meta name="description" content="Create personalized flashcards from your textbooks" />
       </Head>
 
-      <AppBar position = "static">
+      <AppBar position="static">
         <Toolbar>
           <Typography variant="h6">AI Flashcards</Typography>
           <SignedOut>
@@ -22,7 +20,7 @@ export default function Home() {
             <Button>Sign Up</Button>
           </SignedOut>
           <SignedIn>
-            <UserButton/>
+            <UserButton />
           </SignedIn>
         </Toolbar>
       </AppBar>
