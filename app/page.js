@@ -1,7 +1,7 @@
 import Image from "next/image";
 import getStripe from "@/utils/get_stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Toolbar, Typography, Container, AppBar, Button, Box } from "@mui/material";
+import { Toolbar, Typography, Container, AppBar, Button, Box, Link} from "@mui/material";
 import Head from "next/head"; // Correct import for Head
 
 export default function Home() {
@@ -14,10 +14,10 @@ export default function Home() {
 
       <AppBar position="static" >
         <Toolbar style={{backgroundColor: "black", padding: 20, borderBottom: "1px solid grey"}} disableGutters={true} >
-          <Typography variant="h6" style={{flexGrow: 1, fontWeight: "bold", fontSize: 25}}>FlashQ</Typography>
+          <Typography variant="h6" style={{flexGrow: 1, fontWeight: "bold", fontSize: 25}}><Link href="/" style={{color:"white", textDecoration: "none"}}>FlashQ</Link></Typography>
           <SignedOut>
-            <Button color = "inherit">Login</Button>
-            <Button color = "inherit">Sign Up</Button>
+            <Button color = "inherit" ><Link href="/sign-in" style={{color:"white"}}>Sign In</Link></Button>
+            <Button color = "inherit"><Link href="/sign-up" style={{color:"white"}}>Sign Up</Link></Button>
           </SignedOut>
           <SignedIn>
             <UserButton />
