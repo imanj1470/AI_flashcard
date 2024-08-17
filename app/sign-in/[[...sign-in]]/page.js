@@ -19,7 +19,7 @@ export default function SignUpPage() {
                     justifyContent="center"
                     flexGrow={1}
                 >
-                <Typography padding={5} fontSize={40} fontWeight={"bold"}> 
+                <Typography padding={3} fontSize={40} fontWeight={"bold"}> 
                         Sign In
                 </Typography>
                 <SignIn/>
