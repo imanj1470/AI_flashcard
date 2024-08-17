@@ -17,6 +17,5 @@ export default function RootLayout({ children }) {
         <body className={inter.className} style={{ backgroundColor: "black", color: "white" }}>{children}</body>
       </html>
     </ClerkProvider>
-
   );
 }
