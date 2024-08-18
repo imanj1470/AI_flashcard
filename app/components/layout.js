@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
                     </SignedOut>
                     <SignedIn>
                         <Button color="inherit" ><Link href="/generate" style={{ color: "white" }}>Generate</Link></Button>
-                        <Button color="inherit"><Link href="/sign-up" style={{ color: "white" }}>Dashboard</Link></Button> 
+                        <Button color="inherit"><Link href="/flashcards" style={{ color: "white" }}>Flashcards</Link></Button> 
                         {/* MAKE THESE SECTIONS PROPERLY LINK TO PAGES */}
                         **Make these sections properly link to paages and whatever**
                         <UserButton />

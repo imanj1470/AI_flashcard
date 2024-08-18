@@ -1,10 +1,9 @@
 "use client"
 import { useUser, useAuth } from "@clerk/nextjs"
-import { Container, Typography, Box } from "@mui/material"
+import { Container, Typography, Box, Paper, TextField} from "@mui/material"
 import { writeBatch } from "firebase/firestore"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
-
 import Layout from '../components/layout'; //navbar layout
 
 export default function Generate() {
@@ -23,7 +22,17 @@ export default function Generate() {
     }, [isSignedIn, router]);
 
     if (!isSignedIn) {
-        return <div>Loading...</div>;
+        
+        return (
+            <Box sx={{ 
+                display: "grid",
+                placeItems: "center",
+                height:"100vh",
+                textAlign:"center",
+                }}>
+                <Typography variant="h2">Loading...</Typography>
+            </Box>
+        )
     }
 
     const handleSubmit = async () => {
@@ -94,6 +103,15 @@ export default function Generate() {
                     mt: 4, mb: 6, display: "flex", flexDirection: "column", alignItems: "center"
                 }}>
                     <Typography variant="h4">Generate Flashcards</Typography>
+                    <Paper sx={{p:4, width: "100%"}}>
+                        <TextField value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        label = "Enter Text" fullWidth multiline rows={4} variant="outlined"
+                        sx={{
+                            mb: 2
+                        }}
+                        />
+                    </Paper>
                 </Box>
             </Container>
         </Layout>

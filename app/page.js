@@ -30,8 +30,6 @@ export default function Home() {
 
         <Button variant="contained" color="primary" sx={{ mt: 2, backgroundColor: "white", color: "black", borderRadius: 2, paddingLeft: 2.5, paddingRight: 2.5, fontSize: 16, textTransform: "none", '&:hover': { backgroundColor: "#DCDCDC", color: "black" }, }}>
           Get Started</Button>
-      {/* </Box>
-    </Container > */}
     </Layout >
     </>
   );
