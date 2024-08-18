@@ -1,7 +1,6 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { NextResponse } from 'next/server';
 const stripe = new Stripe(process.env.STRPE_API_SECRET_KEY)
-/* const stripe = await loadStripe(process.env.STRIPE_API_PUBLIC_KEY); */
 
 const formatAmountStripe = (amount) => {
     return Math.round(amount * 100)

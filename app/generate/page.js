@@ -1,10 +1,12 @@
 "use client"
 import { useUser, useAuth } from "@clerk/nextjs"
-import { Container, Typography, Box, Paper, TextField, Button, CardActionArea, CardContent } from "@mui/material"
-import { writeBatch } from "firebase/firestore"
+import { Grid, Container, Typography, Box, Paper, TextField, Button, Card, 
+    CardActionArea, CardContent, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
+import {db} from "@/app/firebase"
 import Layout from '../components/layout'; //navbar layout
+import {doc, collection, setDoc, getDoc, writeBatch, cardDocRef} from "firebase/firestore"
 
 export default function Generate() {
     const { isLoaded, isSignedIn, user } = useUser() //use []??
@@ -40,9 +42,9 @@ export default function Generate() {
             method: "POST",
             body: text,
         })
-        .then((res) => res.json())
-        .then((data) => setFlashcards(data))
-        .catch((error) => console.error("Error:", error));
+            .then((res) => res.json())
+            .then((data) => setFlashcards(data))
+            .catch((error) => console.error("Error:", error));
     }
     const handleCardClick = (id) => {
         setFlipped((prev) => ({
@@ -85,7 +87,7 @@ export default function Generate() {
             batch.set(userDocRef, { flashcards: [{ name }] })
         }
         const colRef = collection(userDocRef, name)
-        flashcaards.forEach((flashcard) => {
+        flashcards.forEach((flashcard) => {
             const cardDocRef = doc(colRef)
             batch.set(cardDocRef, flashcard)
         });
@@ -111,7 +113,7 @@ export default function Generate() {
                             sx={{
                                 mb: 2
                             }} />
-                        <Button variant="contained" color="grey" onClick={handleSubmit} fullWidth>
+                        <Button variant="contained" onClick={handleSubmit} fullWidth>
                             {""}
                             Submit
                         </Button>
@@ -135,27 +137,27 @@ export default function Generate() {
                                                         transition: "transform 0.6s",
                                                         transformStyle: "preserve-3d",
                                                         position: "relative",
-                                                        width:"100%",
+                                                        width: "100%",
                                                         height: "200px",
                                                         boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-                                                        transform: flipped[index]? 
-                                                        "rotateY(180deg)" : "rotateY(0deg)",
+                                                        transform: flipped[index] ?
+                                                            "rotateY(180deg)" : "rotateY(0deg)",
                                                     },
 
                                                     "& > div > div": {
                                                         position: "absolute",
-                                                        width:"100%",
+                                                        width: "100%",
                                                         height: "100%",
                                                         backfaceVisibility: "hidden",
-                                                        display:"flex",
-                                                        justifyContent:"center",
-                                                        alignItems:"center",
+                                                        display: "flex",
+                                                        justifyContent: "center",
+                                                        alignItems: "center",
                                                         padding: 2,
                                                         boxSizing: "border-box",
                                                     },
 
-                                                    "& > div > div:nth-of-type(2)":{
-                                                        transform: "rotateY(180)"
+                                                    "& > div > div:nth-of-type(2)": {
+                                                        transform: "rotateY(180deg)"
                                                     }
                                                 }}>
                                                     <div>
@@ -173,10 +175,27 @@ export default function Generate() {
                                 </Grid>
                             ))}
                         </Grid>
+
+                        <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+                            <Button variant="contained" onClick={handleOpen}>Save</Button>
+                        </Box>
                     </Box>
                 )
 
                 }
+                <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>Save Flashcards</DialogTitle>
+                    <DialogContent>Please enter a name for your collection</DialogContent>
+                    <TextField autoFocus margin="dense" label="Collection Name" type="text"
+                        fullWidth value={name} onChange={(e) => setName(e.target.value)}
+                        varaint="outlined"></TextField>
+                    <DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={saveFlashcards}>Save</Button>
+                        </DialogActions>
+                    </DialogContent>
+                </Dialog>
 
             </Container>
         </Layout>
