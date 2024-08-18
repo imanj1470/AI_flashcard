@@ -40,8 +40,9 @@ export default function Generate() {
             method: "POST",
             body: text,
         })
-            .then((res) => res.json())
-            .then(data => setFlashcards(data))
+        .then((res) => res.json())
+        .then((data) => setFlashcards(data))
+        .catch((error) => console.error("Error:", error));
     }
     const handleCardClick = (id) => {
         setFlipped((prev) => ({
