@@ -156,7 +156,6 @@ export default function Generate() {
                                                     "& > div > div:nth-of-type(2)":{
                                                         transform: "rotateY(180)"
                                                     }
-                                                    },
                                                 }}>
                                                     <div>
                                                         <div><Typography variant="h5"
