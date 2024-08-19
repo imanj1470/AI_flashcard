@@ -65,73 +65,83 @@ export default function Home() {
         >Try now</Button>
     
     <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      gap: 4, // Space between boxes
+      backgroundColor: 'black',
+      p: 4, // Padding around the content
+    }}
+  >
+    {/* Create Flashcards Box */}
+    <Box
       sx={{
+        width: 300,
+        height: 200,
+        backgroundColor: 'white',
+        borderRadius: 2,
         display: 'flex',
-        justifyContent: 'center', // Center horizontally
-        gap: 4, // Space between boxes
-        backgroundColor: 'black', // Background color of the parent container
-        p: 4, // Padding of the parent container
-        mt: 4, // Margin top
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'black',
+        p: 2,
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '80%',
-        }}
-      >
-        <Box
-          sx={{
-            flex: 1,
-            margin: '0 10px',
-            backgroundColor: 'white',
-            borderRadius: '8px',
-            padding: 2,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <AllInclusiveIcon sx={{
-        fontSize: 75, // Size of the icon
-        color: 'black', // Color of the icon
-        mb: 2, // Margin bottom to space between icon and text
-      }}/>
-          <Typography color="black" variant="h8">Generate flashcards quickly from your text. Tailor the content to your study needs.</Typography>
-        </Box>
-
-        <Box
-          sx={{
-            flex: 1,
-            margin: '0 10px',
-            backgroundColor: 'white',
-            borderRadius: '8px',
-            padding: 2,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Typography color="black" variant="h8">Easily save and organize your flashcards. Access them anytime from your personal library.</Typography>
-        </Box>
-
-        <Box
-          sx={{
-            flex: 1,
-            margin: '0 10px',
-            backgroundColor: 'white',
-            borderRadius: '8px',
-            padding: 2,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Typography color="black" variant="h8">Unlock premium features with our subscription service. Get advanced tools and unlimited access.</Typography>
-        </Box>
-      </Box>
+      <Typography variant="h6" gutterBottom>
+        Create Flashcards
+      </Typography>
+      <Typography variant="body1">
+        Quickly generate flashcards from your content with ease.
+      </Typography>
     </Box>
+
+    {/* Store Your Cards Box */}
+    <Box
+      sx={{
+        width: 300,
+        height: 200,
+        backgroundColor: 'white',
+        borderRadius: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'black',
+        p: 2,
+      }}
+    >
+      <Typography variant="h6" gutterBottom>
+        Store Your Cards
+      </Typography>
+      <Typography variant="body1">
+        Save and organize your flashcards in one convenient location.
+      </Typography>
+    </Box>
+
+    {/* Subscription Service Box */}
+    <Box
+      sx={{
+        width: 300,
+        height: 200,
+        backgroundColor: 'white',
+        borderRadius: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'black',
+        p: 2,
+      }}
+    >
+      <Typography variant="h6" gutterBottom>
+        Subscription Service
+      </Typography>
+      <Typography variant="body1">
+        Access premium features with our subscription plans.
+      </Typography>
+    </Box>
+  </Box>
 
       </Layout >
 
