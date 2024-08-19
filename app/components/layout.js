@@ -48,4 +48,19 @@ const MyTitle = ({text}) => {
     )
 }
 
-export { Layout, MyTitle}
+
+const LoadingScreen = () => {
+    return (
+        <Box sx={{
+            display: "grid",
+            placeItems: "center",
+            height: "100vh",
+            textAlign: "center",
+        }}>
+            <Typography variant="h2">Loading...</Typography>
+        </Box>
+    )
+}
+
+
+export { Layout, MyTitle, LoadingScreen}

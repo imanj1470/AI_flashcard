@@ -8,7 +8,7 @@ import {
 } from "@mui/material"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import {Layout, MyTitle} from '../components/layout';
+import {Layout, MyTitle, LoadingScreen} from '../components/layout';
 
 export default function Flashcard() {
     const { isLoaded, isSignedIn, user } = useUser() //use []??
@@ -88,10 +88,10 @@ export default function Flashcard() {
                                             }
                                         }}>
                                             <div>
-                                                <div><Typography variant="h5"
+                                                <div><Typography variant="h6"
                                                     component="div">{flashcard.front}</Typography>
                                                 </div>
-                                                <div><Typography variant="h5"
+                                                <div><Typography variant="h6"
                                                     component="div">{flashcard.back}</Typography>
                                                 </div>
                                             </div>

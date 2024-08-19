@@ -43,11 +43,8 @@ export default function Flashcards() {
     <Container maxWidth="lg">
         <Grid container spacing={3} sx={{
             mt: 4
-        }} > {/* display="flex" justifyContent="center" */}
-            {/* <Box display="flex" justifyContent="center" width="100vw">
-            <Typography variant = "h3">Collections</Typography>
-            </Box> */}
-            <MyTitle text="hello"/>
+        }} >
+            <MyTitle text="Collections"/>
             {flashcards.map((flashcard, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                     <Card>
