@@ -7,9 +7,9 @@ import Head from "next/head"; // Correct import for Head
 
 const Layout = ({ children }) => {
     return (
-        <Container maxWidth="false" disableGutters={true} style={{ backgroundColor: "black" }}> {/* header start */}
+        <Container maxWidth="false" disableGutters={true} style={{ backgroundColor: "black" }}>
             <Head>
-                <title>FlashQ</title> {/* Correct usage of title */}
+                <title>FlashQ</title>
                 <meta name="description" content="Create personalized flashcards from your textbooks" />
             </Head>
 
@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
                     <Link href="/" style={{ color: "white", textDecoration: "none" }}>FlashQ</Link>
                 </Typography>
                 
-                {/* Signed Out Section */}
                 <SignedOut>
                     <Box sx={{ display: 'flex', gap: 2 }}>
                         <Button color="inherit">
@@ -31,7 +30,6 @@ const Layout = ({ children }) => {
                     </Box>
                 </SignedOut>
                 
-                {/* Signed In Section */}
                 <SignedIn>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                         <Box sx={{ display: 'flex', gap: 2 }}>
@@ -42,13 +40,12 @@ const Layout = ({ children }) => {
                                 <Link href="/flashcards" style={{ color: "white", textDecoration: "none" }}>Flashcards</Link>
                             </Button>
                         </Box>
-                        <UserButton sx={{ ml: 2 }} /> {/* Adjust margin-left for spacing */}
+                        <UserButton sx={{ ml: 2 }} />
                     </Box>
                 </SignedIn>
             </Toolbar>
         </AppBar>
 
-            {/* main content */}
             <Box sx={{ textAlign: "center", my: 4, backgroundColor: "black" }}>
                 {children}
             </Box>
