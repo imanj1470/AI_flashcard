@@ -7,10 +7,10 @@ import { Toolbar, Typography, Container, AppBar, Button, Box, Link } from "@mui/
 import Head from "next/head"; // Correct import for Head
 import { Typewriter } from 'react-simple-typewriter';
 import { useRouter } from "next/navigation"
-import { Layout } from './/components/layout'; //navbar layout
+import { Layout, LoadingScreen } from './/components/layout'; //navbar layout
 import { useUser, useAuth } from "@clerk/nextjs"
 
-import {AllInclusive as AllInclusiveIcon,} from '@mui/icons-material';
+import {AllInclusive as InfinityIcon, Style as CardIcon, FolderCopy as FolderIcon} from '@mui/icons-material';
 
 export default function Home() {
   const router = useRouter()
@@ -55,7 +55,9 @@ export default function Home() {
         </Typography>
 
         <Button onClick={() => {
+          <LoadingScreen/>
           if (!isSignedIn) {
+            
             router.push('/sign-up')
           } else {
             router.push('/generate')
@@ -88,6 +90,7 @@ export default function Home() {
         p: 2,
       }}
     >
+      <CardIcon sx={{ fontSize: 40, mb: 2 }} />
       <Typography variant="h6" gutterBottom>
         Create Flashcards
       </Typography>
@@ -111,6 +114,7 @@ export default function Home() {
         p: 2,
       }}
     >
+      <FolderIcon sx={{ fontSize: 40, mb: 2 }} />
       <Typography variant="h6" gutterBottom>
         Store Your Cards
       </Typography>
@@ -134,6 +138,7 @@ export default function Home() {
         p: 2,
       }}
     >
+      <InfinityIcon sx={{ fontSize: 40, mb: 2 }} />
       <Typography variant="h6" gutterBottom>
         Subscription Service
       </Typography>

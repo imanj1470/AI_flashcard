@@ -1,12 +1,14 @@
 "use client"
 import { useUser, useAuth } from "@clerk/nextjs"
-import { Grid, Container, Typography, Box, Paper, TextField, Button, Card, 
-    CardActionArea, CardContent, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material"
+import {
+    Grid, Container, Typography, Box, Paper, TextField, Button, Card,
+    CardActionArea, CardContent, Dialog, DialogTitle, DialogContent, DialogActions
+} from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
-import {db} from "@/app/firebase"
-import {Layout, LoadingScreen} from '../components/layout'; //navbar layout
-import {doc, collection, setDoc, getDoc, writeBatch, cardDocRef} from "firebase/firestore"
+import { db } from "@/app/firebase"
+import { Layout, LoadingScreen, MyTitle } from '../components/layout'; //navbar layout
+import { doc, collection, setDoc, getDoc, writeBatch, cardDocRef } from "firebase/firestore"
 
 export default function Generate() {
     const { isLoaded, isSignedIn, user } = useUser() //use []??
@@ -26,7 +28,7 @@ export default function Generate() {
     if (!isSignedIn) {
 
         return (
-            <LoadingScreen/>
+            <LoadingScreen />
         )
     }
 
@@ -98,7 +100,7 @@ export default function Generate() {
                 <Box sx={{
                     mt: 4, mb: 6, display: "flex", flexDirection: "column", alignItems: "center"
                 }}>
-                    <Typography variant="h4">Generate Flashcards</Typography>
+                    <MyTitle text="Generate flashcards" />
                     <Paper sx={{ p: 4, width: "100%" }}>
                         <TextField value={text}
                             onChange={(e) => setText(e.target.value)}
@@ -106,10 +108,26 @@ export default function Generate() {
                             sx={{
                                 mb: 2
                             }} />
-                        <Button variant="contained" onClick={handleSubmit} fullWidth>
-                            {""}
-                            Submit
-                        </Button>
+                        <Button
+  variant="contained"
+  sx={{
+    backgroundColor: '#4CAF50', // Vibrant green color for the button
+    color: 'white', // Text color to be white
+    '&:hover': {
+      backgroundColor: '#45A049', // Slightly darker green for hover effect
+    },
+    '&:active': {
+      backgroundColor: '#388E3C', // Even darker green for active state
+    },
+    borderRadius: 2, // Optional: rounded corners
+    padding: '8px 16px', // Optional: padding for better sizing
+    fontSize: '16px', // Optional: font size for better readability
+  }}
+  onClick={handleSubmit}
+  fullWidth
+>
+  Submit
+</Button>
 
                     </Paper>
                 </Box>
@@ -170,7 +188,23 @@ export default function Generate() {
                         </Grid>
 
                         <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-                            <Button variant="contained" onClick={handleOpen}>Save</Button>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0', // Light gray for hover effect
+                                        color: 'black',
+                                    },
+                                    '&:active': {
+                                        backgroundColor: '#e0e0e0', // Slightly darker gray for active state
+                                    },
+                                }}
+                                onClick={handleOpen}
+                            >
+                                Save
+                            </Button>
                         </Box>
                     </Box>
                 )}
