@@ -9,6 +9,9 @@ import { useState, useEffect } from "react"
 import { db } from "@/app/firebase"
 import { Layout, LoadingScreen, MyTitle } from '../components/layout'; //navbar layout
 import { doc, collection, setDoc, getDoc, writeBatch, cardDocRef } from "firebase/firestore"
+import React from 'react';
+
+import PdfUploader from "@/app/components/pdf"
 
 export default function Generate() {
     const { isLoaded, isSignedIn, user } = useUser() //use []??
@@ -17,6 +20,7 @@ export default function Generate() {
     const [text, setText] = useState("")
     const [name, setName] = useState("")
     const [open, setOpen] = useState(false)
+    const [pdfText, setPdfText] = useState('');
     const router = useRouter()
 
     useEffect(() => {
@@ -31,6 +35,12 @@ export default function Generate() {
             <LoadingScreen />
         )
     }
+
+    const handleTextExtracted = (extractedText) => {
+        setPdfText(extractedText);
+        setText(extractedText); // Set the text state with the extracted text
+    };
+
 
     const handleSubmit = async () => {
         fetch("api/generate", {
@@ -66,6 +76,8 @@ export default function Generate() {
         const userDocRef = doc(collection(db, "users"), user.id)
         const docSnap = await getDoc(userDocRef)
 
+
+
         if (docSnap.exists()) {
             const collections = docSnap.data().flashcards || []
             if (collections.find((f) => f.name === name)) {
@@ -90,6 +102,8 @@ export default function Generate() {
         await batch.commit()
         handleClose()
         router.push("/flashcards")
+
+
     }
 
     //actual components for flashcards
@@ -108,26 +122,33 @@ export default function Generate() {
                             sx={{
                                 mb: 2
                             }} />
-                        <Button
-  variant="contained"
-  sx={{
-    backgroundColor: '#4CAF50', // Vibrant green color for the button
-    color: 'white', // Text color to be white
-    '&:hover': {
-      backgroundColor: '#45A049', // Slightly darker green for hover effect
-    },
-    '&:active': {
-      backgroundColor: '#388E3C', // Even darker green for active state
-    },
-    borderRadius: 2, // Optional: rounded corners
-    padding: '8px 16px', // Optional: padding for better sizing
-    fontSize: '16px', // Optional: font size for better readability
-  }}
-  onClick={handleSubmit}
-  fullWidth
->
-  Submit
-</Button>
+                        <Box width="100%">
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: '#4CAF50', // Vibrant green color for the button
+                                    color: 'white', // Text color to be white
+                                    '&:hover': {
+                                        backgroundColor: '#45A049', // Slightly darker green for hover effect
+                                    },
+                                    '&:active': {
+                                        backgroundColor: '#388E3C', // Even darker green for active state
+                                    },
+                                    borderRadius: 2, // Optional: rounded corners
+                                    padding: '8px 16px', // Optional: padding for better sizing
+                                    fontSize: '16px', // Optional: font size for better readability
+                                }}
+                                onClick={handleSubmit}
+                                fullWidth
+                            >
+                                Submit
+                            </Button>
+
+                            <div>
+                                <h3 style={{ marginTop: '16px' }}>Or Upload a PDF</h3> {/* Adjust marginTop as needed */}
+                                <PdfUploader onTextExtracted={handleTextExtracted} />
+                            </div>
+                        </Box>
 
                     </Paper>
                 </Box>
