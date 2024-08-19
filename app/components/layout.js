@@ -13,23 +13,40 @@ const Layout = ({ children }) => {
                 <meta name="description" content="Create personalized flashcards from your textbooks" />
             </Head>
 
-            <AppBar position="static" >
-                <Toolbar style={{ backgroundColor: "black", padding: 20, borderBottom: "1px solid grey" }} disableGutters={true} >
-                    <Typography variant="h6" style={{ flexGrow: 1, fontWeight: "bold", fontSize: 25 }}><Link href="/" style={{ color: "white", textDecoration: "none" }}>FlashQ</Link></Typography>
-                    <SignedOut>
-                        <Button color="inherit" ><Link href="/sign-in" style={{ color: "white" }}>Sign In</Link></Button>
-                        <Button color="inherit"><Link href="/sign-up" style={{ color: "white" }}>Sign Up</Link></Button>
-                    </SignedOut>
-                    <SignedIn>
-                        <Box >
-                        <Button color="inherit" ><Link href="/generate" style={{ color: "white" }}>Generate</Link></Button>
-                        <Button color="inherit"><Link href="/flashcards" style={{ color: "white" }}>Flashcards</Link></Button> 
-                        {/* MAKE THESE SECTIONS PROPERLY LINK TO PAGES */}
-                        <UserButton />
+            <AppBar position="static" sx={{ backgroundColor: "black", borderBottom: "1px solid grey" }}>
+            <Toolbar sx={{ padding: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: "bold", fontSize: 25 }}>
+                    <Link href="/" style={{ color: "white", textDecoration: "none" }}>FlashQ</Link>
+                </Typography>
+                
+                {/* Signed Out Section */}
+                <SignedOut>
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                        <Button color="inherit">
+                            <Link href="/sign-in" style={{ color: "white", textDecoration: "none" }}>Sign In</Link>
+                        </Button>
+                        <Button color="inherit">
+                            <Link href="/sign-up" style={{ color: "white", textDecoration: "none" }}>Sign Up</Link>
+                        </Button>
+                    </Box>
+                </SignedOut>
+                
+                {/* Signed In Section */}
+                <SignedIn>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <Box sx={{ display: 'flex', gap: 2 }}>
+                            <Button color="inherit">
+                                <Link href="/generate" style={{ color: "white", textDecoration: "none" }}>Generate</Link>
+                            </Button>
+                            <Button color="inherit">
+                                <Link href="/flashcards" style={{ color: "white", textDecoration: "none" }}>Flashcards</Link>
+                            </Button>
                         </Box>
-                    </SignedIn>
-                </Toolbar>
-            </AppBar>  {/* header end */}
+                        <UserButton sx={{ ml: 2 }} /> {/* Adjust margin-left for spacing */}
+                    </Box>
+                </SignedIn>
+            </Toolbar>
+        </AppBar>
 
             {/* main content */}
             <Box sx={{ textAlign: "center", my: 4, backgroundColor: "black" }}>
@@ -40,10 +57,10 @@ const Layout = ({ children }) => {
     )
 }
 
-const MyTitle = ({text}) => {
+const MyTitle = ({ text }) => {
     return (
         <Box width="100vw" display="flex" justifyContent="center" mb={4}>
-            <Typography variant = "h3">{text}</Typography>
+            <Typography variant="h3">{text}</Typography>
         </Box>
     )
 }
@@ -63,4 +80,4 @@ const LoadingScreen = () => {
 }
 
 
-export { Layout, MyTitle, LoadingScreen}
+export { Layout, MyTitle, LoadingScreen }
