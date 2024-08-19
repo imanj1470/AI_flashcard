@@ -14,6 +14,7 @@ const systemPrompt = `You are a flashcard creator. Your primary goal is to gener
 9. Review and Revise: After creating the flashcards, review them to check for accuracy, clarity, and completeness. Make any necessary revisions to improve their effectiveness.
 10. Aim to create a balanced set of flashcards that covers the topics comprehensively
 11. Only generate 10 flashcards.
+12. Dont use more than 12 words
 
 Return in the following JSON format
 {
