@@ -88,10 +88,10 @@ export default function Flashcard() {
                                             }
                                         }}>
                                             <div>
-                                                <div><Typography variant="h5"
+                                                <div><Typography variant="h6"
                                                     component="div">{flashcard.front}</Typography>
                                                 </div>
-                                                <div><Typography variant="h5"
+                                                <div><Typography variant="h6"
                                                     component="div">{flashcard.back}</Typography>
                                                 </div>
                                             </div>

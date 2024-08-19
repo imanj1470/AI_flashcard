@@ -18,7 +18,7 @@ export default function Generate() {
     const router = useRouter()
 
     useEffect(() => {
-        if (!isSignedIn) {     //this redirectts users who are not signed in. uncomment for production
+        if (!isSignedIn) {     //this redirectts users who are not signed in.
             router.push('/');
         }
     }, [isSignedIn, router]);
@@ -154,10 +154,10 @@ export default function Generate() {
                                                     }
                                                 }}>
                                                     <div>
-                                                        <div><Typography variant="h5"
+                                                        <div><Typography variant="h6"
                                                             component="div">{flashcard.front}</Typography>
                                                         </div>
-                                                        <div><Typography variant="h5"
+                                                        <div><Typography variant="h6"
                                                             component="div">{flashcard.back}</Typography>
                                                         </div>
                                                     </div>
