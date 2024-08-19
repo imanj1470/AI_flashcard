@@ -20,7 +20,7 @@ export default function Generate() {
     const [text, setText] = useState("")
     const [name, setName] = useState("")
     const [open, setOpen] = useState(false)
-    const [pdf_text, set_pdf_text] = useState("")
+    const [pdfText, setPdfText] = useState('');
     const router = useRouter()
 
     useEffect(() => {
@@ -36,7 +36,10 @@ export default function Generate() {
         )
     }
 
-
+    const handleTextExtracted = (extractedText) => {
+        setPdfText(extractedText);
+        setText(extractedText); // Set the text state with the extracted text
+    };
 
 
     const handleSubmit = async () => {
@@ -119,31 +122,33 @@ export default function Generate() {
                             sx={{
                                 mb: 2
                             }} />
-                        <Button
-                            variant="contained"
-                            sx={{
-                                backgroundColor: '#4CAF50', // Vibrant green color for the button
-                                color: 'white', // Text color to be white
-                                '&:hover': {
-                                    backgroundColor: '#45A049', // Slightly darker green for hover effect
-                                },
-                                '&:active': {
-                                    backgroundColor: '#388E3C', // Even darker green for active state
-                                },
-                                borderRadius: 2, // Optional: rounded corners
-                                padding: '8px 16px', // Optional: padding for better sizing
-                                fontSize: '16px', // Optional: font size for better readability
-                            }}
-                            onClick={handleSubmit}
-                            fullWidth
-                        >
-                            Submit
-                        </Button>
+                        <Box width="100%">
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: '#4CAF50', // Vibrant green color for the button
+                                    color: 'white', // Text color to be white
+                                    '&:hover': {
+                                        backgroundColor: '#45A049', // Slightly darker green for hover effect
+                                    },
+                                    '&:active': {
+                                        backgroundColor: '#388E3C', // Even darker green for active state
+                                    },
+                                    borderRadius: 2, // Optional: rounded corners
+                                    padding: '8px 16px', // Optional: padding for better sizing
+                                    fontSize: '16px', // Optional: font size for better readability
+                                }}
+                                onClick={handleSubmit}
+                                fullWidth
+                            >
+                                Submit
+                            </Button>
 
-                        <div>
-                            <h1>Upload a PDF to Extract Text</h1>
-                            <PdfUploader />
-                        </div>
+                            <div>
+                                <h3 style={{ marginTop: '16px' }}>Or Upload a PDF</h3> {/* Adjust marginTop as needed */}
+                                <PdfUploader onTextExtracted={handleTextExtracted} />
+                            </div>
+                        </Box>
 
                     </Paper>
                 </Box>

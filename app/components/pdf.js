@@ -7,9 +7,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-const PdfUploader = () => {
-    const [text, setText] = useState('');
-  
+const PdfUploader = ({ onTextExtracted }) => {
+
     const handlePdfUpload = async (event) => {
       const file = event.target.files[0];
   
@@ -29,7 +28,8 @@ const PdfUploader = () => {
             extractedText += ` ${pageText}`;
           }
   
-          setText(extractedText);
+          // Pass the extracted text to the parent component
+          onTextExtracted(extractedText);
         };
   
         fileReader.readAsArrayBuffer(file);
@@ -37,12 +37,17 @@ const PdfUploader = () => {
     };
   
     return (
-      <div>
-        <input type="file" accept="application/pdf" onChange={handlePdfUpload} />
-        <div>
-          <h2>Extracted Text:</h2>
-          <p>{text}</p>
-        </div>
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <input
+          type="file"
+          accept="application/pdf"
+          onChange={handlePdfUpload}
+          id="file-upload"
+          style={{ display: 'none' }}
+        />
+        <label htmlFor="file-upload" style={{ cursor: 'pointer', display: 'inline-block', padding: '10px 20px', backgroundColor: '#4CAF50', color: 'white', borderRadius: '4px' }}>
+          Choose file
+        </label>
       </div>
     );
   };
