@@ -180,9 +180,7 @@ export default function Generate() {
                             <Button variant="contained" onClick={handleOpen}>Save</Button>
                         </Box>
                     </Box>
-                )
-
-                }
+                )}
                 <Dialog open={open} onClose={handleClose}>
                     <DialogTitle>Save Flashcards</DialogTitle>
                     <DialogContent>Please enter a name for your collection</DialogContent>

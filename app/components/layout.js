@@ -21,12 +21,12 @@ const Layout = ({ children }) => {
                         <Button color="inherit"><Link href="/sign-up" style={{ color: "white" }}>Sign Up</Link></Button>
                     </SignedOut>
                     <SignedIn>
+                        <Box >
                         <Button color="inherit" ><Link href="/generate" style={{ color: "white" }}>Generate</Link></Button>
                         <Button color="inherit"><Link href="/flashcards" style={{ color: "white" }}>Flashcards</Link></Button> 
                         {/* MAKE THESE SECTIONS PROPERLY LINK TO PAGES */}
-                        **Make these sections properly link to paages and whatever**
                         <UserButton />
-
+                        </Box>
                     </SignedIn>
                 </Toolbar>
             </AppBar>  {/* header end */}
@@ -40,4 +40,12 @@ const Layout = ({ children }) => {
     )
 }
 
-export default Layout;
+const MyTitle = ({text}) => {
+    return (
+        <Box width="100vw" display="flex" justifyContent="center" mb={4}>
+            <Typography variant = "h3">{text}</Typography>
+        </Box>
+    )
+}
+
+export { Layout, MyTitle}

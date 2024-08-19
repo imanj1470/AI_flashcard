@@ -7,7 +7,7 @@ import { Toolbar, Typography, Container, AppBar, Button, Box, Link } from "@mui/
 import Head from "next/head"; // Correct import for Head
 import { Typewriter } from 'react-simple-typewriter';
 
-import Layout from './/components/layout'; //navbar layout
+import {Layout} from './/components/layout'; //navbar layout
 
 export default function Home() {
   return (

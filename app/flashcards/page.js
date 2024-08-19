@@ -6,8 +6,8 @@ import { useEffect, useState } from "react"
 import { doc, getDoc, setDoc, collection, CollectionReference } from "firebase/firestore"
 import { db } from "@/app/firebase"
 import { useRouter } from "next/navigation"
-import { CardActionArea, Typography } from "@mui/material"
-import { Grid, Container, Card, CardContent } from "@mui/material"
+import {CardActionArea, Typography, Grid, Container, Card, CardContent, Box } from "@mui/material"
+import {Layout, MyTitle} from '../components/layout';
 
 export default function Flashcards() {
     const { isLoaded, isSignedIn, user } = useUser()
@@ -38,15 +38,21 @@ export default function Flashcards() {
         router.push(`/flashcard?id=${id}`)
     }
 
-    return (<Container maxWidth="100vw">
+    return (
+    <Layout>
+    <Container maxWidth="lg">
         <Grid container spacing={3} sx={{
             mt: 4
-        }}>
+        }} > {/* display="flex" justifyContent="center" */}
+            {/* <Box display="flex" justifyContent="center" width="100vw">
+            <Typography variant = "h3">Collections</Typography>
+            </Box> */}
+            <MyTitle text="hello"/>
             {flashcards.map((flashcard, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                     <Card>
                         <CardActionArea onClick={() => {
-                            handleCardClick(id)
+                            handleCardClick(flashcard.name)
                         }} >
                             <CardContent>
                                 <Typography variant="h6">{flashcard.name}</Typography>
@@ -58,5 +64,7 @@ export default function Flashcards() {
             ))}
 
         </Grid>
-    </Container >)
+    </Container >
+    </Layout>
+    )
 }
