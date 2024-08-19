@@ -1,4 +1,4 @@
-import { IM_Fell_French_Canon } from "next/font/google";
+//import { IM_Fell_French_Canon } from "next/font/google";
 import { NextResponse } from "next/server";
 import OpenAI, { fileFromPath } from "openai"
 
