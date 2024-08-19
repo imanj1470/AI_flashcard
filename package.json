@@ -17,8 +17,10 @@
     "@stripe/stripe-js": "^4.3.0",
     "firebase": "^10.13.0",
     "next": "14.2.5",
+    "openai": "^4.55.8",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-simple-typewriter": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "^8",
