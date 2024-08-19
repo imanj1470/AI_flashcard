@@ -5,7 +5,7 @@ import { Grid, Container, Typography, Box, Paper, TextField, Button, Card,
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import {db} from "@/app/firebase"
-import Layout from '../components/layout'; //navbar layout
+import {Layout, LoadingScreen} from '../components/layout'; //navbar layout
 import {doc, collection, setDoc, getDoc, writeBatch, cardDocRef} from "firebase/firestore"
 
 export default function Generate() {
@@ -26,14 +26,7 @@ export default function Generate() {
     if (!isSignedIn) {
 
         return (
-            <Box sx={{
-                display: "grid",
-                placeItems: "center",
-                height: "100vh",
-                textAlign: "center",
-            }}>
-                <Typography variant="h2">Loading...</Typography>
-            </Box>
+            <LoadingScreen/>
         )
     }
 

@@ -8,7 +8,7 @@ import {
 } from "@mui/material"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import {Layout, MyTitle} from '../components/layout';
+import {Layout, MyTitle, LoadingScreen} from '../components/layout';
 
 export default function Flashcard() {
     const { isLoaded, isSignedIn, user } = useUser() //use []??
